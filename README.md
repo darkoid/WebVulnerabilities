@@ -75,19 +75,45 @@ Install foxy proxy addon on your browser([firefox](https://addons.mozilla.org/en
 Or you could just use the browser from burpsuite -
 ![image](https://github.com/darkoid/WebVulnerabilities/assets/81341961/1280a86c-6ac1-4305-8cbc-cda692b34bb0)
 
-## SQL Injection
-SQL injection is definitely the most famous web based attack of all time. Let's first learn a little bit about SQL before getting into its attacks.
-```
-show databases;
-show tables;
-select * from users
-```
+## SQL Injection (sqli)
+SQL injection is definitely the most famous web based attack of all time. SQL (Standard Query Language) Injection is a vulnerability that consists of an attacker interfering with the SQL queries that an application makes to a database.
+![image](https://github.com/darkoid/WebVulnerabilities/assets/81341961/4383c425-1694-472b-b0ae-a04ac264bb89)
+
+**Attacks strategy-**
+1. Try the testing of sqli on parametaers like url, input boxes, and cookies.
+2. Test the target if its using the sql by `'` or `"`. Look for signs like error responce, pattern on website by typing wrong or right sql query, time delay in giving output.
+3. Test the target for `UNION`, `||`or`+`(Concatenation Operator), `--`or`#`or`;--`(comment).
+    
+    - Other Concatenation (function) - `CONCAT()`, `GROUP_CONCAT()`, `CONCAT_WS()`.
+    - Sometimes changing original data makes command show information as original data may already have filled rows & columns. Like in url - *id=1* to *id=0*.
+
+4. Find the ***type*** & ***version*** of DBMS is used by target by the help of [portswigger cheatsheet](https://portswigger.net/web-security/sql-injection/cheat-sheet).
+5. Find the ***Current database*** name : `database()`, `db_name()`, (sometimes)`FROM DUAL`.
+
+   ***information_schema*** is a db that contains info about all the DBs and tables target has access to.
+
+7. List of ***tables***(*information_schema.tables*) > List of ***columns***(*information_schema.columns*).
+8. Output sensitive information using `SELECT` statements.
+
+**Using SQL Map** : `sqlmap -r "request.txt" --level=2 -dump -T injection0x02` # `level=2` for cookies as parameter, `--dump` to dump all tables, `-T` to dump only the table injection0x02
 
 ## XSS
+**Cross-Site Scripting**(XSS) is very famous as well. But its presence is declining as many devloper frameworks have built-in protection again xss by default. Cross-Site Scripting (XSS) is an injection attack where malicious JavaScript gets injected into a web application with the intention of being executed by other users.
+
+Types of XSS - Reflected, Stored, Blind and DOM-Based XSS. (_popular interview question so read more_)
+![image](https://github.com/darkoid/WebVulnerabilities/assets/81341961/3f97d970-056a-4f4d-9be4-b147afa6da14)
+
+![image](https://github.com/darkoid/WebVulnerabilities/assets/81341961/7eb9b9d9-4d6c-4c14-bade-0104bef08ea5)
+**Stored XSS** also has a type called Blind XSS ehich means you can't see the payload working or be able to test it against yourself first.
+
+![image](https://github.com/darkoid/WebVulnerabilities/assets/81341961/1b53a730-406f-48eb-a421-e23b29b4ae85)
 
 ## Command Injection
+Command injection happens when we can control a parameter that gets passed into a shell. Its a very dangerous vuln as you can info from system not just the website.
 
 ## Insecure File Upload
+
+### [Lab Walkthrough](/insecure-file-upload.md)
 
 ## Attacking Authentication
 
