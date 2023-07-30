@@ -64,8 +64,11 @@ sudo docker-compose up
 ```
 
 ## Burpsuite
-It comes preinstalled will kali, if you are on other linux use this [guide](https://www.linuxfordevices.com/tutorials/linux/install-burpsuite-community) from portswigger.
+It comes preinstalled will kali, so no need to install it manually.
 Burpsuite is developed by PortSwigger. This tool serves as an application layer proxy which allows you to capture the requests issued by your Browser. With BurpSuite, you can capture requests, alter them, launch attacks, try put different headers and more!
+
+We'll use burpsuite to catch requests make changes and then send it to get desired response. Burpsuite community edition has some restrictions
+on **Intruder**(automated attacks), so we'll do those using wffuz command-line tool which also comes pre-installed in kali.
 
 **How to setup burpsuite?**
 Install foxy proxy addon on your browser([firefox](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/)/[chrome](https://chrome.google.com/webstore/detail/foxyproxy-standard/gcknhkkoolaabfmlnjonogaaifnjlfnp)) then select options > add > put title as `8080`, port as `8080` and Proxy IP address or DNS name as `127.0.0.1` > click save. Now whenever you need to use burosuite just fireup the application and select the 8080 title from addon menu.
@@ -140,7 +143,7 @@ The peh course section(read on the **Motivation or Credit** heading) has one. So
 1. [ ] Something else.
 
 ## Motivation or Credit
-Recently [The Practical Ethical Hacking Course](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course) on tcm academy updated by adding a new section called **Find & Exploit Common Web Vulnerabilities** which was around 2 hours. Credit goes to [Alex Olsen](https://academy.tcm-sec.com/courses/author/1728995) who also made [Practical API Hacking](https://academy.tcm-sec.com/p/hacking-apis) course which I highly recommend. The videos from PEH were so fun to watch I had to make this project.
+Recently [The Practical Ethical Hacking Course](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course) on tcm academy updated by adding a new section called **Find & Exploit Common Web Vulnerabilities** which was around 2 hours. Credit goes to [Alex Olsen](https://academy.tcm-sec.com/courses/author/1728995) who also made [Practical API Hacking](https://academy.tcm-sec.com/p/hacking-apis) course which I highly recommend. The videos from PEH were so fun to watch that I had to make this project.
 
 ## Disclaimer
 - Neither the project nor its developer promote any kind of illegal activity and are not responsible for any misuse or damage caused by this project.
@@ -152,7 +155,7 @@ Recently [The Practical Ethical Hacking Course](https://academy.tcm-sec.com/p/pr
 
 ## Contribute
 
-- Contributions are welcome and encouraged, provided your code is of sufficient quality. 
+- Contributions are welcome and encouraged, provided your code or change is of sufficient quality. 
 
 - Before submitting a pull request, please ensure that your code adheres to the license under MIT license, or dedicated to the public domain (BSD, GPL, etc. code is incompatible)
 
